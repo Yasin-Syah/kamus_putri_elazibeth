@@ -96,4 +96,34 @@ public class MyHashMap<K, V> {
       e.next = null;
       return e;
     }
+    masuk<K, V> prev = e;
+    e = e.next;
+
+    while (e != null) {
+      if (e.getKey() == key) {
+        prev.next = e.next;
+        e.next = null;
+        return e;
+      }
+      prev = e;
+      e = e.next;
+    }
+
+    return null;
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < SIZE; i++) {
+      if (table[i] != null) {
+        sb.append(i + " " + table[i] + "\n");
+      } else {
+        sb.append(i + " " + "null" + "\n");
+      }
+    }
+
+    return sb.toString();
+  }
+}  
 
