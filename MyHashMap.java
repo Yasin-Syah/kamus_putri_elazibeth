@@ -65,3 +65,35 @@ public class MyHashMap<K, V> {
       e.next = new masuk<K, V>(key, value);
     }
   }
+    public V get(K key) {
+    int hash = key.hashCode() % SIZE;
+    masuk<K, V> e = table[hash];
+
+    if (e == null) {
+      return null;
+    }
+
+    while (e != null) {
+      if (e.getKey() == key) {
+        return e.getValue();
+      }
+      e = e.next;
+    }
+
+    return null;
+  }
+
+  public masuk<K, V> remove(K key) {
+    int hash = key.hashCode() % SIZE;
+    masuk<K, V> e = table[hash];
+
+    if (e == null) {
+      return null;
+    }
+
+    if (e.getKey() == key) {
+      table[hash] = e.next;
+      e.next = null;
+      return e;
+    }
+
