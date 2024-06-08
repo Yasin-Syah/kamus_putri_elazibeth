@@ -15,3 +15,23 @@ public class KamusPutriElizabeth {
                 kataUnik.add(kata);
             }
         }
+          int maksKata = 5000; // Batas maksimal kata dalam kamus
+        int hitungan = 0; // Jumlah kata yang sudah disimpan
+        MyHashMap<Integer, String> myHashMap = new MyHashMap<Integer, String>();
+        int i = 1;
+
+        for (String kata : kataUnik) {
+            if (hitungan >= maksKata) {
+                break; // Hentikan jika sudah mencapai batas maksimal
+            }
+            myHashMap.put(i, kata);
+            i++;
+            hitungan++;
+        }
+        int j = 1;
+        for (int l = hitungan; l != 0; l--) {
+            System.out.println(myHashMap.get(j));
+            j++;
+        }
+    }
+}
