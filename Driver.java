@@ -4,25 +4,26 @@ import java.util.TreeSet;
 public class KamusPutriElizabeth {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Masukkan paragraf (max 500):");
-        String input = scan.nextLine().toLowerCase(); // Mengubah semua huruf menjadi huruf kecil
-        String[] kalimat = input.split("[^a-zA-Z]+"); // Memisahkan kata-kata berdasarkan karakter non-alphabetic
+        System.out.println("Masukkan paragraf (max 5000):");
+        String input = scan.nextLine().toLowerCase();
+        String[] kalimat = input.split("[^a-zA-Z]+");
 
-        TreeSet<String> kataUnik = new TreeSet<>(); // Menggunakan TreeSet untuk mengurutkan kata-kata secara alfabetis
+        TreeSet<String> kataUnik = new TreeSet<>();
                                                     
         for (String kata : kalimat) {
-            if (!kata.isEmpty()) { // Mengabaikan string kosong
+            if (!kata.isEmpty()) {
                 kataUnik.add(kata);
             }
         }
-          int maksKata = 5000; // Batas maksimal kata dalam kamus
-        int hitungan = 0; // Jumlah kata yang sudah disimpan
+
+        int maksKata = 5000; 
+        int hitungan = 0; 
         MyHashMap<Integer, String> myHashMap = new MyHashMap<Integer, String>();
         int i = 1;
 
         for (String kata : kataUnik) {
             if (hitungan >= maksKata) {
-                break; // Hentikan jika sudah mencapai batas maksimal
+                break; 
             }
             myHashMap.put(i, kata);
             i++;
