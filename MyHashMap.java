@@ -34,3 +34,34 @@ public class MyHashMap<K, V> {
       }
   
     }
+     private final int SIZE = 5000;
+
+  private masuk<K, V> table[];
+
+  public MyHashMap() {
+    table = new masuk[SIZE];
+  }
+
+  public void put(K key, V value) {
+    int hash = key.hashCode() % SIZE;
+    masuk<K, V> e = table[hash];
+
+    if (e == null) {
+      table[hash] = new masuk<K, V>(key, value);
+    } else {
+      while (e.next != null) {
+        if (e.getKey() == key) {
+          e.setValue(value);
+          return;
+        }
+        e = e.next;
+      }
+
+      if (e.getKey() == key) {
+        e.setValue(value);
+        return;
+      }
+
+      e.next = new masuk<K, V>(key, value);
+    }
+  }
